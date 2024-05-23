@@ -1,0 +1,64 @@
+/* Layout.module.css */
+
+.container {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container header {
+  background-color: #333;
+  color: white;
+  /* padding: 1rem; */
+  flex: 1;
+  background-color: #02231c;
+  background-image: linear-gradient(
+    319deg,
+    #00ff89,
+    #00d775 6%,
+    #00b061 16%,
+    #008b4d 27%,
+    #00673a 37%,
+    #005632 47%,
+    #00452a 57%,
+    #003521 67%,
+    #003020 77%,
+    #002c1f 87%,
+    #01271e 95%,
+    #02231c
+  );
+  font-weight: bold;
+}
+
+.container nav ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.container nav ul li a link {
+  color: white;
+  text-decoration: none;
+  /* padding: 0 1rem; */
+  height: 100%;
+}
+
+.container nav ul li a:hover {
+  background-color: #555;
+}
+
+.container main {
+  height: 100%;
+  /* padding: 2rem; */
+  flex: 18;
+}
+
+.container footer {
+  background-color: #333;
+  color: white;
+  /* padding: 1rem; */
+  text-align: center;
+  flex: 1;
+}

@@ -61,8 +61,9 @@ const iterateFiles = async (directoryPath) => {
 (async () => {
   try {
     // delete all EnergyInvoice registers before script
+    console.log("Deleting all energy invoices from database...")
     await prisma.energyInvoice.deleteMany();
-    await iterateFiles("./Faturas");
+    await iterateFiles("../Faturas");
     const totalInvoices = await prisma.energyInvoice.count();
     console.log("Invoices created: ", totalInvoices);
   } catch (error) {
