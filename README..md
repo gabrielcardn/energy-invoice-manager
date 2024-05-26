@@ -1,10 +1,22 @@
+# Multi-Language README
+
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/gabrielcardn/energy-invoice-manager/blob/main/README..md)
+[![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/gabrielcardn/energy-invoice-manager/blob/main/README.pt-BR.md)
+
 # Energy Invoice Manager
 
 EnergyInvoiceManager is a project focused on automating the processing of electric utility bills. The system extracts relevant data from the invoices, structures this data in a PostgreSQL database, and presents it through a web application using an API.
 
 ## Database Setup
 
-The project relies on a PostgreSQL database managed with Prisma. Before running the application, ensure that you have PostgreSQL installed and running. Create a database named 'lumi'. To initialize the database tables, run the following command:
+The project relies on a PostgreSQL database managed with Prisma. Before running the application, ensure that you have PostgreSQL installed and running. Create a database named 'lumi'. The PostgreSQL configuration is:
+
+- user = postgres
+- password = root
+- host = localhost:5432
+- database = lumi
+
+To initialize the database tables, run the following command:
 
 npx prisma migrate dev --name init
 
@@ -19,18 +31,6 @@ npm install
 2. Navigate to the /appserver directory and run:
 
 npm install
-
-## Configuration
-
-Before running the application, ensure that PostgreSQL is installed and running with a database named 'lumi'. The PostgreSQL configuration is:
-
-- user = postgres
-- password = root
-- host = localhost:5432
-- database = lumi
-  Initialize the database tables by executing the following command:
-
-npx prisma migrate dev --name init
 
 ## Testing
 
@@ -56,7 +56,7 @@ npm run build-start
 
 This command will build and start the Next.js application on http://localhost:3001.
 
-## Dashboard
+## Dashboard Page
 
 - The dashboard page displays various charts representing energy consumption data.
 - To view the charts, select a client number from the dropdown menu. The charts will then display energy consumption data specific to the selected client over time.
