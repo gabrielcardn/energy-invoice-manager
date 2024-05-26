@@ -9,9 +9,16 @@ EnergyInvoiceManager é um projeto focado em automatizar o processamento de cont
 
 ## Configuração do Banco de Dados
 
-O projeto depende de um banco de dados PostgreSQL gerenciado com Prisma. Antes de executar a aplicação, certifique-se de ter o PostgreSQL instalado e em execução. Crie um banco de dados chamado 'lumi'. Para inicializar as tabelas do banco de dados, execute o seguinte comando:
+O projeto depende de um banco de dados PostgreSQL gerenciado com Prisma. Antes de executar a aplicação, certifique-se de ter o PostgreSQL instalado e em execução. Crie um banco de dados chamado 'lumi'. 
+Certifique-se de que o PostgreSQL está instalado e em execução com um banco de dados chamado 'lumi'. A configuração do PostgreSQL é:
+- usuário = postgres
+- senha = root
+- host = localhost:5432
+- banco de dados = lumi
+Para inicializar as tabelas do banco de dados, execute o seguinte comando:
 
 npx prisma migrate dev --name init
+
 
 ## Instalação
 
@@ -24,18 +31,6 @@ npm install
 2. Navegue até o diretório /appserver e execute:
 
 npm install
-
-## Configuração
-
-Antes de executar a aplicação, certifique-se de que o PostgreSQL está instalado e em execução com um banco de dados chamado 'lumi'. A configuração do PostgreSQL é:
-
-- usuário = postgres
-- senha = root
-- host = localhost:5432
-- banco de dados = lumi
-  Inicialize as tabelas do banco de dados executando o seguinte comando:
-
-npx prisma migrate dev --name init
 
 ## Testes
 
