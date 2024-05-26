@@ -7,6 +7,10 @@
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+  position: fixed; /* Fix the position relative to the viewport */
+  top: 50%; /* Position at the vertical center */
+  left: 50%; /* Position at the horizontal center */
+  transform: translate(-50%, -50%); /* Center the spinner */
 }
 
 @keyframes rotation {
