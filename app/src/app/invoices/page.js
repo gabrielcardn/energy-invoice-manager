@@ -1,6 +1,6 @@
 "use client";
 import Table from "@/components/Table";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import styles from "./invoices.module.css";
 import Filter from "@/components/Filter";
@@ -13,7 +13,7 @@ export default function Invoices() {
   const [selectedClientNumber, selectClientNumber] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const controller = new Controller();
+  const controller = useMemo(() => new Controller(), []); // Wrap controller initialization in useMemo
 
   useEffect(() => {
     setLoading(true);
@@ -21,7 +21,7 @@ export default function Invoices() {
       .getClientNumbers()
       .then((data) => setClientNumbers(data))
       .finally(() => setLoading(false));
-  }, []);
+  }, [controller]);
 
   //7005400387
   const handleFilterSubmit = (filterValue) => {

@@ -3,7 +3,7 @@ import Chart from "@/components/Chart";
 import Filter from "@/components/Filter";
 import Panel from "@/components/Panel";
 import Spinner from "@/components/Spinner";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import styles from "./dashboard.module.css";
 import Controller from "../classes/Controller";
@@ -14,7 +14,7 @@ export default function Dashboard() {
   const [selectedClientNumber, selectClientNumber] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const controller = new Controller();
+  const controller = useMemo(() => new Controller(), []); // Wrap controller initialization in useMemo
 
   useEffect(() => {
     setLoading(true);
@@ -22,7 +22,7 @@ export default function Dashboard() {
       .getClientNumbers()
       .then((data) => setClientNumbers(data))
       .finally(() => setLoading(false));
-  }, []);
+  }, [controller]);
 
   //7005400387
   const handleFilterSubmit = (filterValue) => {

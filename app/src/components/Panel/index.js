@@ -4,8 +4,10 @@ import styles from "./Panel.module.css";
 const Panel = ({ components }) => {
   return (
     <div className={styles.container}>
-      {components?.map((component) => (
-        <div className={styles.component}>{component}</div>
+      {components?.map((component, index) => (
+        <div key={"panel:" + index} className={styles.component}>
+          {component}
+        </div>
       ))}
     </div>
   );

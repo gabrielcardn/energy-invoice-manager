@@ -1,9 +1,11 @@
 .container {
   display: "flex";
   flex-wrap: "wrap";
-  background-color: aquamarine;
-  width: 100%;
+  background-color: whitesmoke;
+  width: fit-content;
   height: 100%;
+  margin: 4px;
+  border-radius: 4px;
 }
 
 .chart {

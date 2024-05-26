@@ -24,6 +24,10 @@
   background-color: #f0f0f0;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .clickable:hover {
   filter: brightness(90%);
   cursor: pointer;
