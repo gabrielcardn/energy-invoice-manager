@@ -15,6 +15,7 @@ Certifique-se de que o PostgreSQL está instalado e em execução com um banco d
 - senha = root
 - host = localhost:5432
 - banco de dados = lumi
+  
 Para inicializar as tabelas do banco de dados, execute o seguinte comando:
 
 npx prisma migrate dev --name init
