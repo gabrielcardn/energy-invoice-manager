@@ -1,0 +1,30 @@
+.container {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: small;
+}
+
+.container table {
+  overflow-x: hidden;
+}
+
+.container th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.container td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
+.container th {
+  background-color: #f0f0f0;
+}
+
+.clickable:hover {
+  filter: brightness(90%);
+  cursor: pointer;
+}

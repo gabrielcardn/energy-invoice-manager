@@ -26,4 +26,5 @@ model EnergyInvoice {
   compensatedEnergyConsumptionQuantity Float
   compensatedEnergyConsumptionValue    Float
   municipalContribution                Float
+  filePath                             String
 }

@@ -5,6 +5,15 @@ class ExtractData {
     this.splitStringRegex = /\s+/; // /\w+|:\d+/g;
   }
 
+  #parseNumber = (value) => {
+    // Replace the comma with a period and remove any whitespace
+    const str = value.toString();
+    let numberStr = str.replace(".", "").replace(",", ".");
+
+    // Parse the number and return it
+    return parseFloat(numberStr);
+  };
+
   #getClientNumber = () => {
     const lineIndex = this.#lines.findIndex((line) => line.includes("Nº DO CLIENTE"));
     const line = this.#lines[lineIndex + 1];
@@ -54,15 +63,20 @@ class ExtractData {
     const result = line.split(this.splitStringRegex).filter((s) => s !== "");
 
     let ret = {
-      quantity: parseFloat(result[2].replace(",", ".")),
-      value: parseFloat(result[4].replace(",", ".")),
+      quantity: this.#parseNumber(result[2]),
+      value: this.#parseNumber(result[4]),
     };
 
     return ret;
   };
 
   #getExemptEnergyConsumption = () => {
-    const lineIndex = this.#lines.findIndex((line) => line.includes("Energia SCEE ISENTA"));
+    const lineIndex = this.#lines.findIndex(
+      (line) =>
+        line.includes("Energia SCEE ISENTA") ||
+        line.includes("Energia SCEE s/ ICMS") ||
+        line.includes("En comp. s/ ICMS")
+    );
     const line = this.#lines[lineIndex];
 
     if (!line)
@@ -72,19 +86,27 @@ class ExtractData {
       };
 
     const result = line.split(this.splitStringRegex).filter((s) => s !== "");
-
     let ret = {
-      quantity: parseFloat(result[3].replace(",", ".")),
-      value: parseFloat(result[5].replace(",", ".")),
+      quantity: this.#parseNumber(result[3]),
+      value: this.#parseNumber(result[5]),
     };
+    if (line.includes("Energia SCEE s/ ICMS") || line.includes("En comp. s/ ICMS")) {
+      ret = {
+        quantity: this.#parseNumber(result[4]),
+        value: this.#parseNumber(result[6]),
+      };
+    }
 
     return ret;
   };
 
   #getCompensatedEnergyConsumption = () => {
-    const lineIndex = this.#lines.findIndex((line) => line.includes("Energia compensada GD I"));
+    const lineIndex = this.#lines.findIndex(
+      (line) => line.includes("Energia compensada GD I") || line.includes("Energia injetada HFP")
+    );
     const line = this.#lines[lineIndex];
 
+    //
     if (!line)
       return {
         quantity: 0,
@@ -94,9 +116,15 @@ class ExtractData {
     const result = line.split(this.splitStringRegex).filter((s) => s !== "");
 
     let ret = {
-      quantity: parseFloat(result[4].replace(",", ".")),
-      value: parseFloat(result[6].replace(",", ".")),
+      quantity: this.#parseNumber(result[4]),
+      value: this.#parseNumber(result[6]),
     };
+    if (line.includes("Energia injetada HFP")) {
+      ret = {
+        quantity: this.#parseNumber(result[3]),
+        value: this.#parseNumber(result[5]),
+      };
+    }
 
     return ret;
   };
@@ -111,7 +139,7 @@ class ExtractData {
 
     const result = line.split(this.splitStringRegex).filter((s) => s !== "");
 
-    return parseFloat(result[4].replace(",", "."));
+    return this.#parseNumber(result[4]);
   };
 
   getData = () => {
@@ -129,17 +157,17 @@ class ExtractData {
     const compensatedEnergyConsumptionQuantity = compensatedEnergyConsumption.quantity;
     const compensatedEnergyConsumptionValue = compensatedEnergyConsumption.value;
     return {
-      clientNumber,
-      refMonth,
-      month,
-      year,
-      energyConsumptionQuantity,
-      energyConsumptionValue,
-      exemptEnergyConsumptionQuantity,
-      exemptEnergyConsumptionValue,
-      compensatedEnergyConsumptionQuantity,
-      compensatedEnergyConsumptionValue,
-      municipalContribution,
+      clientNumber: clientNumber,
+      refMonth: refMonth,
+      month: month,
+      year: year,
+      energyConsumptionQuantity: energyConsumptionQuantity,
+      energyConsumptionValue: energyConsumptionValue,
+      exemptEnergyConsumptionQuantity: exemptEnergyConsumptionQuantity,
+      exemptEnergyConsumptionValue: exemptEnergyConsumptionValue,
+      compensatedEnergyConsumptionQuantity: compensatedEnergyConsumptionQuantity,
+      compensatedEnergyConsumptionValue: compensatedEnergyConsumptionValue,
+      municipalContribution: municipalContribution,
     };
   };
 }

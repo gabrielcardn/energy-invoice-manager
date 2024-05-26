@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  display: flex;
+  color: white;
+  font-weight: bold;
+}
+
+.container select {
+  width: 100%;
+}
+
+.container option {
+  font-weight: bold;
+}

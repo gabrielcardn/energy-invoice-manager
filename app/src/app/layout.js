@@ -2,7 +2,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import styles from "./layout.module.css";
-import Link from "next/link";
+import NavBar from "@/components/NavBar";
+// import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,20 +18,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <div className={styles.container}>
           <header className={styles.header}>
-            <nav>
-              <ul className={styles.nav}>
-                <li>
-                  <Link className={styles.link} href="/">
-                    Dashboard
-                  </Link>
-                </li>
-                <li>
-                  <Link className={styles.link} href="/faturas">
-                    Faturas
-                  </Link>
-                </li>
-              </ul>
-            </nav>
+            <NavBar />
           </header>
           <main className={styles.main}>{children}</main>
           <footer className={styles.footer}>{/* Rodapé */}</footer>
