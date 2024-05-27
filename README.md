@@ -10,11 +10,13 @@ EnergyInvoiceManager é um projeto focado em automatizar o processamento de cont
 ## Configuração do Banco de Dados
 
 O projeto depende de um banco de dados PostgreSQL gerenciado com Prisma. Antes de executar a aplicação, certifique-se de ter o PostgreSQL instalado e em execução. Crie um banco de dados chamado 'lumi'. 
-Certifique-se de que o PostgreSQL está instalado e em execução com um banco de dados chamado 'lumi'. A configuração do PostgreSQL é:
+Certifique-se de que o PostgreSQL está instalado e em execução com um banco de dados chamado 'lumi'. A configuração inicial do PostgreSQL é:
 - usuário = postgres
 - senha = root
 - host = localhost:5432
 - banco de dados = lumi
+
+Mas caso seja necessário mudar baseado no seu ambiente, a configuração está presente em /appserver/.env
   
 Para inicializar as tabelas do banco de dados, execute o seguinte comando:
 
