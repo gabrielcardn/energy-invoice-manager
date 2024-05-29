@@ -16,9 +16,12 @@ O projeto depende de um banco de dados PostgreSQL gerenciado com Prisma. Antes d
 - host = localhost:5432
 - banco de dados = lumi
 
+Mas caso seja necessário mudar baseado no seu ambiente, a configuração está presente em /appserver/.env
+  
 Para inicializar as tabelas do banco de dados, execute o seguinte comando:
 
 npx prisma migrate dev --name init
+
 
 ## Instalação
 
